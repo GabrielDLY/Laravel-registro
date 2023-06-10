@@ -10,7 +10,7 @@ class Repository extends Model
     use HasFactory;
 
     protected $fillable = [
-        'url', 'description'
+        'url', 'description', 'id'
     ];
 
     public function user()

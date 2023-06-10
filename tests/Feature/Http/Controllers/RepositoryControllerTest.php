@@ -2,12 +2,15 @@
 
 namespace Tests\Feature\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Livewire\WithFileUploads;
 use Tests\TestCase;
 
 class RepositoryControllerTest extends TestCase
 {
+    use WithFaker, RefreshDatabase;
     public function test_guest()
     {
         $this->get('repositories')->assertRedirect('login'); //index
@@ -21,6 +24,18 @@ class RepositoryControllerTest extends TestCase
 
     public function test_store()
     {
+        $data = [
+            'url' => $this->faker->url,
+            'description' => $this->faker->text,
+        ];
+
+        $user = User::factory()->create();
+
+        $this
+            ->actingAs($user)
+            ->post('repositories', $data)
+            ->assertRedirect('repositories');
         
+        $this->assertDatabaseHas('repositories', $data);
     }
 }

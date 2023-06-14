@@ -8,14 +8,14 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg p-4" >
-                <form action="{{ route('repositories.store') }}" method="POST" class=" max-w-mg">
+                <form action="{{ route('repositories.store') }}" method="POST" class=" max-w-md">
                     @csrf
 
                     <label class=" block font-medium text-sm text-gray-700">URL *</label>
                     <input type="text" name="url" class=" form-input rounded-md shadow-md">
 
                     <label class=" block font-medium text-sm text-gray-700">Description *</label>
-                    <textarea type="text" name="url" class=" form-input rounded-md shadow-md"></textarea>
+                    <textarea type="text" name="description" class=" form-input rounded-md shadow-md"></textarea>
 
                     <hr class="my-4">
 
